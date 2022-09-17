@@ -26,29 +26,30 @@
   <body>
     <nav class="navbar navbar-light bg-light">
       <div class="container d-flex justify-content-between">
-        <form class="d-flex">
+        <form class="d-flex ms-5" style="width: 60%">
           <input
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success bg-warning" type="submit">
+            Search
+          </button>
         </form>
         <div class="dropdown">
           <button
-            class="btn btn-secondary dropdown-toggle"
+            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown button
+            Account
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Account info</a></li>
+            <li><a class="dropdown-item" href="#">Log out</a></li>
           </ul>
         </div>
       </div>

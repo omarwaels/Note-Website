@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: 0;
 }
+
+body {
+  background-image: linear-gradient(
+      90deg,
+      rgba(227, 187, 29, 0.43601190476190477) 32%,
+      rgba(227, 187, 29, 0.36878501400560226) 100%
+    ),
+    url(pexels-bich-tran-760710.jpg);
+  background-size: cover;
+}
