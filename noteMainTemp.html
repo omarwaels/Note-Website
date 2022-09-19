@@ -26,7 +26,22 @@
   <body>
     <nav class="navbar navbar-light bg-light">
       <div class="container d-flex justify-content-between">
-        <form class="d-flex ms-5" style="width: 60%">
+        <div class="dropdown m-auto smalNavButton">
+          <button
+            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-sm-0 m-3"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Account
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Account info</a></li>
+            <li><a class="dropdown-item" href="#">Log out</a></li>
+          </ul>
+        </div>
+        <form class="d-flex m-auto ms-sm-5" style="width: 60%">
           <input
             class="form-control me-2"
             type="search"
@@ -37,9 +52,9 @@
             Search
           </button>
         </form>
-        <div class="dropdown">
+        <div class="dropdown lgNavButton">
           <button
-            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning"
+            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-sm-0 m-3"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -54,6 +69,66 @@
         </div>
       </div>
     </nav>
+    <section class="container mt-5">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4" style="height: 310px">
+          <div class="card m-3" style="width: 80%">
+            <div class="card-body rounded">
+              <h5 class="card-title">Note title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Note Date</h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Remove</a>
+              <a href="#" class="card-link">Favourite</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="height: 310px">
+          <div class="card m-3" style="width: 80%">
+            <div class="card-body rounded">
+              <h5 class="card-title">Note title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Note Date</h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Remove</a>
+              <a href="#" class="card-link"> Favourite</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="height: 310px">
+          <div class="card m-3" style="width: 80%">
+            <div class="card-body rounded">
+              <h5 class="card-title">Note title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Note Date</h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Remove</a>
+              <a href="#" class="card-link">Favourite</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4" style="height: 310px">
+          <div class="card m-3" style="width: 80%">
+            <div class="card-body rounded">
+              <h5 class="card-title">Note title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Note Date</h6>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Remove</a>
+              <a href="#" class="card-link">Favourite</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>

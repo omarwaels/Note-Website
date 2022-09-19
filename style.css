@@ -12,4 +12,36 @@ body {
     ),
     url(pexels-bich-tran-760710.jpg);
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
+  background-size: cover;
+}
+div.smalNavButton {
+  display: none;
+}
+div.card:hover {
+  transform: scale(1.1);
+  transition-duration: 0.7s;
+  cursor: pointer;
+}
+div.smalNavButton button:hover {
+  color: grey !important;
+}
+div.lgNavButton button:hover {
+  color: grey !important ;
+}
+img.addIco:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 430px) {
+  div.smalNavButton {
+    display: block;
+  }
+  div.lgNavButton {
+    display: none;
+  }
 }
