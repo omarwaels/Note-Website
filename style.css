@@ -36,12 +36,46 @@ img.addIco:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
+div.container i.fa-bars:hover {
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: brown;
+}
+div.container i.fa-square:hover {
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: brown;
+}
+div.container i.fa-square {
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: brown;
+}
 
+@media only screen and (max-width: 995px) {
+  section.container div div.col-12 {
+    height: 340px;
+  }
+  section.container div.d-flex-col div.col-12 {
+    height: 200px;
+  }
+}
 @media only screen and (max-width: 430px) {
   div.smalNavButton {
     display: block;
   }
   div.lgNavButton {
     display: none;
+  }
+  section.container div.d-flex-col div.col-12 {
+    height: 250px;
+  }
+}
+@media only screen and (min-width: 995px) {
+  section.container div div.col-12 {
+    height: 340px;
+  }
+  section.container div.d-flex-col div.col-12 {
+    height: 160px;
   }
 }
