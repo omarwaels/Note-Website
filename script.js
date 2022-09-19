@@ -44,10 +44,19 @@ let cardContainer = document.querySelectorAll(
 
 listButton.addEventListener("click", showlist);
 function showlist() {
-  listButton.style.backgroundColor = "brown";
+  listButton.style.backgroundColor = "orange";
   MenuButton.style.backgroundColor = "transparent";
   cardSection.classList.replace("row", "d-flex-col");
   for (let i = 0; i < cardContainer.length; i++) {
     cardContainer[i].style.width = "100%";
+  }
+}
+MenuButton.addEventListener("click", showMenu);
+function showMenu() {
+  listButton.style.backgroundColor = "transparent";
+  MenuButton.style.backgroundColor = "orange";
+  cardSection.classList.replace("d-flex-col", "row");
+  for (let i = 0; i < cardContainer.length; i++) {
+    cardContainer[i].style.width = null;
   }
 }
