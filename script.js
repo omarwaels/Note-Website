@@ -8,7 +8,17 @@ console.log(allCards);
 let addMarkContainer = document.createElement("div");
 let listButton = document.querySelector("div.container i.fa-bars");
 let MenuButton = document.querySelector("div.container i.fa-square");
+let noteContainer = document.querySelector("div.noteviewer");
+let icoNoteContainer = document.querySelector("div.noteviewer div i");
+let delay = document.querySelector("div.noteviewer div div div.spinner-border");
+let saveButton = document.querySelector(
+  "div.noteviewer div div div button.btn"
+);
+let rightMark = document.querySelector("div.noteviewer div div div i.fa-check");
 
+function delays(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 for (let i = 0; i < allCards.length; i++) {
   if (i % 3 == 0) {
     allCards[i].style.borderRadius = "10px";
@@ -59,4 +69,26 @@ function showMenu() {
   for (let i = 0; i < cardContainer.length; i++) {
     cardContainer[i].style.width = null;
   }
+}
+
+for (let i = 0; i < cardContainer.length; i++) {
+  cardContainer[i].addEventListener("click", showNoteContent);
+}
+icoNoteContainer.addEventListener("click", hideNoteContent);
+function showNoteContent() {
+  noteContainer.style.display = "block";
+}
+function hideNoteContent() {
+  noteContainer.style.display = "none";
+}
+
+saveButton.addEventListener("click", showDelay);
+async function showDelay() {
+  delay.style.display = "block";
+  await delays(500);
+  hideDelay();
+  rightMark.style.display = "inline";
+}
+function hideDelay() {
+  delay.style.display = "none";
 }
