@@ -82,8 +82,17 @@
         >
           <div class="card m-3" style="width: 80%">
             <div class="card-body rounded">
-              <h5 class="card-title">Note title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Note Date</h6>
+              <h5 class="card-title mb-2" style="letter-spacing: 3px">
+                <span>Note title</span>
+                <i class="fa-solid fa-pen-to-square"></i>
+              </h5>
+
+              <h6
+                class="card-subtitle mt-2 mb-2 text-muted"
+                style="font-size: 14px"
+              >
+                Note Date
+              </h6>
               <p class="card-text my-2">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
@@ -128,6 +137,21 @@
             <span class="visually-hidden">Loading...</span>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="titleInputPage">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        "
+      >
+        <h5 class="bg-light rounded px-3 py-1">Insert Title</h5>
+        <textarea cols="30" rows="1" style="resize: none"></textarea>
+        <button type="button" class="btn btn-primary btn-m mt-3">Enter</button>
       </div>
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

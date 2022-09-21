@@ -38,7 +38,7 @@ let globalsaveind = 0;
 addCard.classList.add("col-12", "col-sm-6", "col-md-4");
 addCard.style.height = "310px";
 let allCards = Array.from(document.querySelectorAll("div.card-body"));
-
+let globalindex2 = 0;
 let addMarkContainer = document.createElement("div");
 let listButton = document.querySelector("div.container i.fa-bars");
 let MenuButton = document.querySelector("div.container i.fa-square");
@@ -90,6 +90,9 @@ addMarkContainer.appendChild(addMark);
 let cardContainer = document.querySelectorAll(
   "section.container div div.col-12"
 );
+let titleOfNote = Array.from(
+  document.querySelectorAll("div.card-body h5 span")
+);
 
 for (let i = 1; i < num; i++) {
   let clone = cardContainer[0].cloneNode(true);
@@ -97,16 +100,20 @@ for (let i = 1; i < num; i++) {
   addCard.insertAdjacentElement("beforebegin", clone);
   allCards = Array.from(document.querySelectorAll("div.card-body"));
   dateOfLastCard = document.querySelectorAll("div.card-body h6.card-subtitle");
+  AbbrevOfLastCard = document.querySelectorAll("div.card-body p");
   abrevOfLastCard = document.querySelectorAll("div.card-body p");
+  titleOfNote = Array.from(document.querySelectorAll("div.card-body h5 span"));
   cardContainer = document.querySelectorAll("section.container div div.col-12");
   abrevOfLastCard[abrevOfLastCard.length - 1].textContent = `Empty`;
   let d = new Date();
   dateOfLastCard[dateOfLastCard.length - 1].textContent = d.toUTCString();
   allCards = Array.from(document.querySelectorAll("div.card-body"));
+  AbbrevOfLastCard[i].textContent = notes[i]["abbrev"];
+  titleOfNote[i].textContent = notes[i]["Title"];
   borderColor();
   showAndHidecontent();
 }
-
+////////////////////////////////////////////////////////////////////////////////////////
 listButton.addEventListener("click", showlist);
 function showlist() {
   listButton.style.backgroundColor = "orange";
@@ -141,6 +148,8 @@ function showAndHidecontent() {
   function hideNoteContent() {
     noteContainer.style.display = "none";
   }
+  Textarea = document.querySelector("form textarea");
+  Textarea.value = " ";
 }
 showAndHidecontent();
 
@@ -180,25 +189,34 @@ function createNote() {
   let d = new Date();
   dateOfLastCard[dateOfLastCard.length - 1].textContent = d.toUTCString();
   allCards = Array.from(document.querySelectorAll("div.card-body"));
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "Created",
+    showConfirmButton: false,
+    timer: 1500,
+  });
   borderColor();
   showAndHidecontent();
+  saveoperation();
 
   let newnote = {
     Title: "Note title",
-    Date: "Note date",
     abbrev: "Some quick example",
-    notevalue: "black",
-    favourite: false,
+    notevalue: " ",
   };
   allNotes.push(newnote);
   console.log(allNotes, "sasa");
   localStorage.setItem("1", JSON.stringify(allNotes));
   showContent();
   removes();
+  cards = Array.from(document.querySelectorAll("section div div.col-12")); /////////////////
+  searching();
+  displaytitle();
 }
 function showContent() {
   allCards = Array.from(document.querySelectorAll("div.card-body"));
-
+  notes = JSON.parse(localStorage.getItem("1"));
   for (var i = 0; i < allCards.length; i++) {
     allCards[i].addEventListener("click", openNote);
   }
@@ -253,20 +271,111 @@ removes();
 
 allCards = Array.from(document.querySelectorAll("div.card-body"));
 console.log(allCards, "sasa");
+function saveoperation() {
+  for (let i = 0; i < allCards.length; i++) {
+    allCards[i].addEventListener("click", adjustSaving);
+  }
+  function adjustSaving(e) {
+    globalsaveind = allCards.indexOf(e.currentTarget);
+    saveButton.addEventListener("click", saveInfo);
+  }
 
-console.log(cardContainer, "card container");
-for (let i = 0; i < allCards.length; i++) {
-  allCards[i].addEventListener("click", adjustSaving);
-}
-function adjustSaving(e) {
-  globalsaveind = allCards.indexOf(e.currentTarget);
-  saveButton.addEventListener("click", saveInfo);
-}
+  function saveInfo() {
+    console.log(globalsaveind);
+    AbbrevOfLastCard = document.querySelectorAll("div.card-body p");
+    notes[globalsaveind]["notevalue"] = Textarea.value;
+    console.log(notes[globalsaveind], "sasa");
+    let textInAbreviation = " ";
+    if (Textarea.value == "") {
+      textInAbreviation = "Empty";
+    } else if (Textarea.value.length < 25) {
+      textInAbreviation = Textarea.value + " .....";
+    } else if (Textarea.value.length >= 25) {
+      textInAbreviation = Textarea.value.slice(0, 26) + " .....";
+    }
+    notes[globalsaveind]["abbrev"] = textInAbreviation;
 
-function saveInfo() {
-  console.log(globalsaveind);
-  notes[globalsaveind]["notevalue"] = Textarea.value;
-  console.log(notes[globalsaveind], "sasa");
-  allNotes[globalsaveind] = notes[globalsaveind];
-  localStorage.setItem("1", JSON.stringify(allNotes));
+    allNotes[globalsaveind] = notes[globalsaveind];
+
+    localStorage.setItem("1", JSON.stringify(allNotes));
+    AbbrevOfLastCard[globalsaveind].textContent = textInAbreviation;
+  }
 }
+saveoperation();
+
+function displaytitle() {
+  let editTitle = Array.from(
+    document.querySelectorAll("i.fa-solid.fa-pen-to-square")
+  );
+  let titlePage = document.querySelector(".titleInputPage");
+  let titlePageButton = document.querySelector("div.titleInputPage div button");
+  let titlePageTextarea = document.querySelector(
+    "div.titleInputPage div textarea"
+  );
+  titleOfNote = Array.from(document.querySelectorAll("div.card-body h5 span"));
+
+  for (let i = 0; i < editTitle.length; i++) {
+    editTitle[i].addEventListener("click", showTitlePage);
+  }
+  function showTitlePage(e) {
+    e.stopPropagation();
+    globalindex2 = editTitle.indexOf(e.currentTarget);
+
+    titlePage.style.display = "block";
+    titlePageButton.addEventListener("click", changetitle);
+  }
+  function changetitle() {
+    titleOfNote[globalindex2].textContent = titlePageTextarea.value;
+    notes[globalindex2]["Title"] = titlePageTextarea.value;
+    titlePage.style.display = "none";
+    allNotes[globalindex2] = notes[globalindex2];
+    localStorage.setItem("1", JSON.stringify(allNotes));
+  }
+}
+displaytitle();
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+function searching() {
+  let searchTextArea = document.querySelector("input.form-control");
+  let searchButton = document.querySelector("form button.btn-outline-success");
+  console.log(searchButton, "heeloo");
+  titleOfNote = Array.from(document.querySelectorAll("div.card-body h5 span"));
+  cards = Array.from(document.querySelectorAll("section div div.col-12"));
+  searchButton.addEventListener("click", search);
+  function search() {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Done",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    if (searchTextArea.value == "") {
+      for (let i = 1; i < cards.length - 1; i++) {
+        cards[i].style.display = "block";
+      }
+
+      return;
+    }
+    console.log(searchTextArea.value);
+    let searchText = searchTextArea.value;
+    console.log(searchText, "search text");
+    let trueindix = [];
+    for (let i = 1; i < titleOfNote.length; i++) {
+      console.log(titleOfNote[i].textContent);
+      if (titleOfNote[i].textContent.includes(searchText)) {
+        trueindix.push(i);
+      }
+    }
+    console.log(cards, "same");
+    for (let i = 1; i < cards.length - 1; i++) {
+      if (trueindix.includes(i)) {
+        cards[i].style.display = "block";
+        continue;
+      }
+      cards[i].style.display = "none";
+    }
+    trueindix = [];
+  }
+}
+searching();

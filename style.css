@@ -62,6 +62,14 @@ div.noteviewer div form textarea {
   box-shadow: none;
   resize: none;
 }
+.titleInputPage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 @media only screen and (max-width: 995px) {
   section.container div div.col-12 {
     height: 340px;
@@ -128,4 +136,9 @@ div.noteviewer div i.fa-x:hover {
 }
 div.noteviewer div div div.spinner-border {
   display: none;
+}
+i.fa-solid.fa-pen-to-square:hover {
+  background-color: rgba(255, 0, 0, 0.4);
+  cursor: pointer;
+  padding-left: 5px;
 }
