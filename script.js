@@ -12,9 +12,14 @@ let userInfo = {
 //   notevalue: "white",
 //   favourite: false,
 // };
-let notes = JSON.parse(localStorage.getItem("1"));
 
+let notes = JSON.parse(localStorage.getItem("1"));
+let flag = false;
+if (notes == null) {
+  flag = true;
+}
 console.log(notes);
+
 if (notes != null) {
   for (var i in notes) {
     allNotes.push(notes[i]);
@@ -23,9 +28,11 @@ if (notes != null) {
   allNotes.push(userInfo);
 }
 const num = allNotes.length;
-console.log(notes);
 
 localStorage.setItem("1", JSON.stringify(allNotes));
+if (flag == true) {
+  location.reload();
+}
 // allNotes.push(note);
 
 console.log(allNotes.length, "Allnote length", notes.length, "note length");
