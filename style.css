@@ -25,7 +25,7 @@ div.smalNavButton {
 div.card {
   transition-duration: 0.7s;
 }
-div.card:hover {
+section.container div.row div.col-12 div.card:hover {
   transform: scale(1.1);
   transition-duration: 0.7s;
   cursor: pointer;
