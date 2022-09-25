@@ -37,3 +37,11 @@ async function logIn(e) {
 
   console.log("failed");
 }
+function showPass() {
+  var x = document.getElementById("mypassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
