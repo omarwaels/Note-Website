@@ -89,12 +89,6 @@ div.noteviewer div form textarea {
   }
 }
 @media only screen and (max-width: 430px) {
-  div.smalNavButton {
-    display: block;
-  }
-  div.lgNavButton {
-    display: none;
-  }
   section.container div.d-flex-col div.col-12 {
     height: 250px;
   }

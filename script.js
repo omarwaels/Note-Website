@@ -1,5 +1,5 @@
-let emailButtonNav = document.querySelectorAll(
-  "nav button.btn.btn-secondary.btn-lg.dropdown-toggle.bg-light.text-warning.m-sm-0.m-3"
+let emailButtonNav = document.querySelector(
+  "nav button.btn.btn-secondary.btn-lg.dropdown-toggle.bg-light.text-warning.m-1"
 );
 console.log(localStorage.length, "sasa");
 let numOfUser = 0;
@@ -13,8 +13,8 @@ try {
       localStorage.setItem(i, JSON.stringify(userInfo));
       console.log("True login");
       const nameOnly = userInfo[0]["useremail"].split("@");
-      emailButtonNav[0].textContent = nameOnly[0];
-      emailButtonNav[1].textContent = nameOnly[0];
+      emailButtonNav.textContent = nameOnly[0];
+
       break;
     }
   }

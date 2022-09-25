@@ -24,26 +24,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light d-none d-lg-block">
-      <div class="container d-flex justify-content-between">
-        <div class="dropdown m-auto smalNavButton">
-          <button
-            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-sm-0 m-3"
-            type="button"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Account
-          </button>
-
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-              <a class="dropdown-item" href="noteLogTemp.html">Log out</a>
-            </li>
-          </ul>
-        </div>
-        <form class="d-flex m-auto ms-sm-5 mb-1" style="width: 60%">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container d-flex justify-content-center">
+        <form class="d-flex m-auto mb-1" style="width: 60%">
           <input
             class="form-control me-2"
             type="search"
@@ -56,7 +39,7 @@
         </form>
         <div class="dropdown lgNavButton">
           <button
-            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-sm-0 m-3"
+            class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-1"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -69,68 +52,6 @@
               <a class="dropdown-item" href="noteLogTemp.html">Log out</a>
             </li>
           </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Nav bar for small and medium screens -->
-    <nav class="navbar bg-light fixed-top d-sm-block d-lg-none">
-      <div class="container-fluid">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item dropdown">
-                <div class="dropdown m-auto smalNavButton">
-                  <button
-                    class="btn btn-secondary btn-lg dropdown-toggle bg-light text-warning m-sm-0 m-3"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Account
-                  </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="noteLogTemp.html">Log out</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex m-auto ms-sm-5 mb-1" style="width: 60%">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success bg-warning" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
         </div>
       </div>
     </nav>
