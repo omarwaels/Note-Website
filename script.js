@@ -1,9 +1,35 @@
+let emailButtonNav = document.querySelectorAll(
+  "nav button.btn.btn-secondary.btn-lg.dropdown-toggle.bg-light.text-warning.m-sm-0.m-3"
+);
+console.log(localStorage.length, "sasa");
+let numOfUser = 0;
+
+try {
+  for (let i = 1; i < localStorage.length + 1; i++) {
+    let userInfo = JSON.parse(localStorage.getItem(String(i)));
+    if (userInfo[0]["status"] == true) {
+      numOfUser = i;
+      userInfo[0]["status"] = false;
+      localStorage.setItem(i, JSON.stringify(userInfo));
+      console.log("True login");
+      const nameOnly = userInfo[0]["useremail"].split("@");
+      emailButtonNav[0].textContent = nameOnly[0];
+      emailButtonNav[1].textContent = nameOnly[0];
+      break;
+    }
+  }
+} catch (err) {
+  localStorage.removeItem(0);
+
+  window.location.href = "noteLogTemp.html";
+}
+if (numOfUser == 0) {
+  window.location.href = "noteLogTemp.html";
+}
+
+console.log(numOfUser, "numOfUser");
+
 let allNotes = [];
-let userInfo = {
-  username: "omar wael",
-  password: "0123456",
-  phone: "01154615235",
-};
 
 // let note = {
 //   Title: "Note title",
@@ -13,26 +39,20 @@ let userInfo = {
 //   favourite: false,
 // };
 
-let notes = JSON.parse(localStorage.getItem("1"));
+let notes = JSON.parse(localStorage.getItem(numOfUser));
 let flag = false;
-if (notes == null) {
-  flag = true;
-}
+
 console.log(notes);
 
 if (notes != null) {
   for (var i in notes) {
     allNotes.push(notes[i]);
   }
-} else {
-  allNotes.push(userInfo);
 }
 const num = allNotes.length;
 
-localStorage.setItem("1", JSON.stringify(allNotes));
-if (flag == true) {
-  location.reload();
-}
+localStorage.setItem(numOfUser, JSON.stringify(allNotes));
+
 // allNotes.push(note);
 
 console.log(allNotes.length, "Allnote length", notes.length, "note length");
@@ -209,12 +229,12 @@ function createNote() {
 
   let newnote = {
     Title: "Note title",
-    abbrev: "Some quick example",
+    abbrev: "Empty",
     notevalue: " ",
   };
   allNotes.push(newnote);
   console.log(allNotes, "sasa");
-  localStorage.setItem("1", JSON.stringify(allNotes));
+  localStorage.setItem(numOfUser, JSON.stringify(allNotes));
   showContent();
   removes();
   cards = Array.from(document.querySelectorAll("section div div.col-12")); /////////////////
@@ -223,7 +243,7 @@ function createNote() {
 }
 function showContent() {
   allCards = Array.from(document.querySelectorAll("div.card-body"));
-  notes = JSON.parse(localStorage.getItem("1"));
+  notes = JSON.parse(localStorage.getItem(numOfUser));
   for (var i = 0; i < allCards.length; i++) {
     allCards[i].addEventListener("click", openNote);
   }
@@ -269,7 +289,7 @@ function removes() {
           "section.container div div.col-12"
         );
         allNotes.splice(index, 1);
-        localStorage.setItem("1", JSON.stringify(allNotes));
+        localStorage.setItem(numOfUser, JSON.stringify(allNotes));
       }
     });
   }
@@ -304,7 +324,7 @@ function saveoperation() {
 
     allNotes[globalsaveind] = notes[globalsaveind];
 
-    localStorage.setItem("1", JSON.stringify(allNotes));
+    localStorage.setItem(numOfUser, JSON.stringify(allNotes));
     AbbrevOfLastCard[globalsaveind].textContent = textInAbreviation;
   }
 }
@@ -336,7 +356,7 @@ function displaytitle() {
     notes[globalindex2]["Title"] = titlePageTextarea.value;
     titlePage.style.display = "none";
     allNotes[globalindex2] = notes[globalindex2];
-    localStorage.setItem("1", JSON.stringify(allNotes));
+    localStorage.setItem(numOfUser, JSON.stringify(allNotes));
   }
 }
 displaytitle();
@@ -349,7 +369,8 @@ function searching() {
   titleOfNote = Array.from(document.querySelectorAll("div.card-body h5 span"));
   cards = Array.from(document.querySelectorAll("section div div.col-12"));
   searchButton.addEventListener("click", search);
-  function search() {
+  function search(e) {
+    e.preventDefault();
     Swal.fire({
       position: "top-end",
       icon: "success",

@@ -37,13 +37,17 @@
                     Create an account
                   </h2>
 
-                  <form>
+                  <form action="noteLogTemp.html">
                     <div class="form-outline mb-4">
                       <input
                         type="text"
                         id="form3Example1cg"
                         class="form-control form-control-lg"
                         placeholder="First Name"
+                        pattern="[a-zA-Z0-9]+"
+                        minlength="4"
+                        maxlength="15"
+                        required
                       />
                     </div>
                     <div class="form-outline mb-4">
@@ -52,6 +56,10 @@
                         id="form3Example1cg"
                         class="form-control form-control-lg"
                         placeholder="Last Name"
+                        pattern="[a-zA-Z0-9]+"
+                        minlength="4"
+                        maxlength="15"
+                        required
                       />
                     </div>
                     <div class="form-outline mb-4">
@@ -60,6 +68,17 @@
                         id="form3Example3cg"
                         class="form-control form-control-lg"
                         placeholder="Email address"
+                        pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                        required
+                      />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input
+                        type="password"
+                        id="form3Example4cdg"
+                        class="form-control form-control-lg"
+                        placeholder="Phone"
+                        required
                       />
                     </div>
 
@@ -69,17 +88,15 @@
                         id="form3Example4cg"
                         class="form-control form-control-lg"
                         placeholder="Password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,15}$"
+                        required
                       />
                     </div>
-
-                    <div class="form-outline mb-4">
-                      <input
-                        type="password"
-                        id="form3Example4cdg"
-                        class="form-control form-control-lg"
-                        placeholder="Confirm Password"
-                      />
-                    </div>
+                    <!-- At least 1 Uppercase
+                    At least 1 Lowercase
+                    At least 1 Number
+                    At least 1 Symbol, symbol allowed
+                    Min 6 chars and Max 15 chars -->
 
                     <div class="form-check d-flex justify-content-center mb-5">
                       <input
@@ -98,7 +115,7 @@
 
                     <div class="d-flex justify-content-center">
                       <button
-                        type="button"
+                        type="submit"
                         class="btn btn-block btn-lg gradient-custom-4 text-body col-lg-8 col-10"
                         style="background-color: rgb(248, 216, 73)"
                       >
@@ -137,6 +154,7 @@
         </div>
       </div>
     </section>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="sign.js"></script>
   </body>
 </html>
