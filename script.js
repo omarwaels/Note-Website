@@ -169,12 +169,14 @@ function showAndHidecontent() {
   }
 
   icoNoteContainer.addEventListener("click", hideNoteContent);
+
   function showNoteContent(e) {
     noteContainer.style.display = "block";
   }
   function hideNoteContent() {
     noteContainer.style.display = "none";
   }
+
   Textarea = document.querySelector("form textarea");
   Textarea.value = " ";
 }
@@ -339,6 +341,19 @@ function displaytitle() {
   let titlePageTextarea = document.querySelector(
     "div.titleInputPage div textarea"
   );
+  titlePageTextarea.addEventListener("keydown", submit);
+  function submit(e) {
+    if (e.key == "Enter") {
+      changetitle();
+    }
+  }
+  document.addEventListener("keydown", exit);
+  function exit(e) {
+    if (e.key == "Escape") {
+      titlePage.style.display = "none";
+      noteContainer.style.display = "none";
+    }
+  }
   titleOfNote = Array.from(document.querySelectorAll("div.card-body h5 span"));
 
   for (let i = 0; i < editTitle.length; i++) {
@@ -346,6 +361,7 @@ function displaytitle() {
   }
   function showTitlePage(e) {
     e.stopPropagation();
+
     globalindex2 = editTitle.indexOf(e.currentTarget);
 
     titlePage.style.display = "block";
